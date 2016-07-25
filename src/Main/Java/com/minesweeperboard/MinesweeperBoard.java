@@ -6,20 +6,18 @@ package Java.com.minesweeperboard;
 public class MinesweeperBoard {
 
     String field[][];
-
+    String row,column;
 
     public void drawField(String input_row_column) {
 
         String fieldValues[] = input_row_column.split(" ");
-        String row = fieldValues[0], column = fieldValues[1];
-
-System.out.println("row= "+row+"  column= "+column);
+        row = fieldValues[0];
+        column = fieldValues[1];
         validate(fieldValues, row, column);
     }
 
     private void validate(String[] fieldValues, String row, String column) {
         if (row.matches("\\d+") && column.matches("\\d+") && (fieldValues.length == 2)) {
-            System.out.println(fieldValues[0] + " " + fieldValues[1]);
             field = new String[Integer.parseInt(row)][Integer.parseInt(column)];
         } else {
             throw new InvalidFieldException();
@@ -33,22 +31,24 @@ System.out.println("row= "+row+"  column= "+column);
             {
                 field = myField;
 
-            } else {
+            }
+            else
+            {
 
                 throw new InvalidFieldValuesException();
 
-                 }
-
-
-
-     for(int i=0;i<field.length;i++)
-        {
-            for (int j = 0; j <field[i].length; j++)
-            {
-                System.out.print(field[i][j]);
             }
-            System.out.println();
-        }
+
+
+
+         /*for(int i=0;i<field.length;i++)
+            {
+                for (int j = 0; j <field[i].length; j++)
+                {
+                    System.out.print(field[i][j]);
+                }
+                System.out.println();
+            }*/
 
 }
 
@@ -63,8 +63,15 @@ System.out.println("row= "+row+"  column= "+column);
                 solution[i][j] = 0;
             }
         }
-
-
+        System.out.println(row+" "+column);
+        for(int i=0;i<field.length;i++)
+        {
+            for (int j = 0; j <field[i].length; j++)
+            {
+                System.out.print(field[i][j]);
+            }
+            System.out.println();
+        }
 
         for (int i = 0; i <myField.length; i++)
             for (int j = 0; j < myField[i].length; j++)
@@ -73,6 +80,8 @@ System.out.println("row= "+row+"  column= "+column);
                         if (myField[k][m]!="*")
                           solution[i][j]++;
                     }
+
+
 
         for (int i = 0; i <myField.length; i++) {
             for (int j = 0; j < myField[i].length; j++) {
